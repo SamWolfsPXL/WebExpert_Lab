@@ -1,0 +1,15 @@
+<form #form="ngForm" (ngSubmit)="submit(form)">
+  <input type="text" name="name" placeholder="Name" [(ngModel)]="name" minlength="3" required/>
+  <p *ngIf="form.controls.name?.errors?.minlength" class="error">Minimal 3 characters.</p>
+  <p *ngIf="form.controls.name?.errors?.required" class="error">Required.</p>
+  <input type="email" name="email" placeholder="name@domain.com" [(ngModel)]="email" pattern="[a-zA-z0-9_\.]+@[a-zA-Z0-9_\.]+" required/>
+  <p *ngIf="form.controls.email?.errors?.pattern" class="error">Invalid Email.</p>
+  <p *ngIf="form.controls.email?.errors?.required" class="error">Required.</p>
+  <input type="tel" name="phone" placeholder="Phone Number" [(ngModel)]="phone" minlength="9" required/>
+  <p *ngIf="form.controls.phone?.errors?.minlength" class="error">Minimal 9 characters.</p>
+  <p *ngIf="form.controls.phone?.errors?.required" class="error">Required.</p>
+  <input type="text" name="avatar" placeholder="Avatar Url" [(ngModel)]="avatar" />
+  <input type="checkbox" name="isFavorite" id="isFavorite" [(ngModel)]="isFavorite" />
+  <label for="isFavorite" [class.favorite]="isFavorite">Favorite</label>
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>

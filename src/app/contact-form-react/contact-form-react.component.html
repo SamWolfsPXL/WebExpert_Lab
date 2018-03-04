@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+  <input type="text" name="name" placeholder="Name" formControlName="name"/>
+  <p *ngIf="form.get('name').hasError('minlength')" class="error">Minimal 3 characters.</p>
+  <p *ngIf="form.get('name').hasError('required')" class="error">Required.</p>
+  <input type="email" name="email" placeholder="name@domain.com" formControlName="email"/>
+  <p *ngIf="form.get('email').hasError('pattern')" class="error">Invalid Email.</p>
+  <p *ngIf="form.get('email').hasError('required')" class="error">Required.</p>
+  <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone"/>
+  <p *ngIf="form.get('phone').hasError('minlength')" class="error">Minimal 9 characters.</p>
+  <p *ngIf="form.get('phone').hasError('required')" class="error">Required.</p>
+  <input type="text" name="avatar" placeholder="Avatar Url" formControlName="avatar" />
+  <input type="checkbox" name="isFavorite" id="isFavorite" formControlName="isFavorite" />
+  <label for="isFavorite" [class.favorite]="isFavorite">Favorite</label>
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>

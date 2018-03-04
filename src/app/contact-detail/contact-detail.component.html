@@ -1,0 +1,6 @@
+<app-contact *ngIf="contact && state !== editorState.editing" [contact]="contact"></app-contact>
+<app-contact-form-react *ngIf="contact && state === editorState.editing" [contact]="contact" (onSubmit)="updateContact($event, id)"></app-contact-form-react>
+<button type="button" class="edit" (click)="toggleEditing()" [hidden]="state === editorState.deleted">{{ state===editorState.editing ? 'Cancel' : 'Edit Contact'}}</button>
+<button type="button" (click)="deleteContact(id)" [hidden]="state === editorState.deleted" class="delete">Delete contact</button>
+<p [hidden]="state !== editorState.updated" class="update-message">Contact update successful.</p>
+<p [hidden]="state !== editorState.deleted" class="delete-message">Contact deleted.</p>
